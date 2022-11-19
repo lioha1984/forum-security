@@ -1,6 +1,6 @@
 package telran.java2022.accounting.service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
@@ -83,7 +83,7 @@ public class UserAccountServiceImpl implements UserAccountService, CommandLineRu
 		UserAccount userAccount = repository.findById(login).orElseThrow(() -> new UserNotFoundException());
 		String password = passwordEncoder.encode(newPassword);
 		userAccount.setPassword(password);
-		userAccount.setExpirationDay(LocalDate.now().plusDays(1));
+		userAccount.setExpirationDay(LocalDateTime.now().plusDays(1));
 		repository.save(userAccount);
 	}
 

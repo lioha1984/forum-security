@@ -1,6 +1,6 @@
 package telran.java2022.security.service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
@@ -23,6 +23,6 @@ public class CustomWebSequrity {
 	
 	public boolean checkExpirationPeriod(String userName) {
 		UserAccount user = userAccountRepository.findById(userName).orElse(null);
-		return user != null && LocalDate.now().isBefore(user.getExpirationDay());
+		return user != null && LocalDateTime.now().isBefore(user.getExpirationDay());
 	}
 }
