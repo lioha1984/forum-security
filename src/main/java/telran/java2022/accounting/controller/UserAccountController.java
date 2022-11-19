@@ -36,11 +36,13 @@ public class UserAccountController {
 	}
 
 	@DeleteMapping("/user/{login}")
+//	@PreAuthorize("#login.equals(principal.getUsername()) or hasRole('ADMINISTRATOR')")
 	public UserAccountResponseDto removeUser(Principal principal) {
 		return accountService.removeUser(principal.getName());
 	}
 
 	@PutMapping("/user/{login}")
+//	@PreAuthorize("#login == authentication.name")
 	public UserAccountResponseDto updateUser(Principal principal, @RequestBody UserUpdateDto userUpdateDto) {
 		return accountService.editUser(principal.getName(), userUpdateDto);
 	}
