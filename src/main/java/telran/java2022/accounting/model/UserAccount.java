@@ -1,6 +1,6 @@
 package telran.java2022.accounting.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,12 +25,11 @@ public class UserAccount {
 	String lastName;
 	Set<String> roles;
 	@Setter
-	LocalDateTime expirationDay;
+	LocalDate passwordExpDate;
 
 	public UserAccount() {
 		roles = new HashSet<>();
 		roles.add("USER");
-		expirationDay = LocalDateTime.now().plusDays(1);
 	}
 
 	public UserAccount(String login, String password, String firstName, String lastName) {
